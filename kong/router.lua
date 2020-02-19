@@ -1165,8 +1165,8 @@ function _M.new(routes)
       local paths = routes[i].route.paths
       if paths ~= nil and #paths > 1 then
         -- split routes by paths to sort properly
+        local route = utils.deep_merge(routes[i], false)
         for j = 1, #paths do
-          local route = routes[i]
           local index = #marshalled_routes + 1
           local err
 
