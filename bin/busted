@@ -6,10 +6,10 @@ if not os.getenv("KONG_BUSTED_RESPAWNED") then
   -- initial run, so go update the environment
   local script = {}
   for line in io.popen("set"):lines() do
-    local ktvar, val = line:match("^KONG_TEST_([^=]*)=(.*)")
-    if ktvar then
+    local ktVar, val = line:match("^KONG_TEST_([^=]*)=(.*)")  //variable name should be camel case letters(ktvar--> ktVar)
+    if ktVar then
       -- reinserted KONG_TEST_xxx as KONG_xxx; append
-      table.insert(script, "export KONG_" .. ktvar .. "=" ..val)
+      table.insert(script, "export KONG_" .. ktVar .. "=" ..val)
     end
 
     local var = line:match("^(KONG_[^=]*)")
